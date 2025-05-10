@@ -1,6 +1,7 @@
 import sys
 import time
 import random
+import threading
 import colorama
 import webbrowser
 from colorama import Fore, Style
@@ -181,15 +182,36 @@ def main():
     with open("output.html", "w", encoding='utf-8') as f:
         f.write(html_output)
 
-    # Start the server
+    # Start the server in a thread
+    import threading
+
+    def serve():
+        print(f"Serving at port {port}")
+        webbrowser.open(f"http://localhost:{port}/output.html")
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            pass
+        finally:
+            httpd.shutdown()
+            httpd.server_close()
+
     port = random.randint(20000, 20100)
     handler = CustomHTTPRequestHandler
     httpd = TCPServer(("localhost", port), handler)
-    print(f"Serving at port {port}")
-    webbrowser.open(f"http://localhost:{port}/output.html")
-    time.sleep(10)  # Keep open for 10 seconds (or your desired time)
-    httpd.shutdown()
-    httpd.server_close()
+
+    server_thread = threading.Thread(target=serve)
+    server_thread.start()
+
+    try:
+        # Keep server running for 3 seconds or until interrupted
+        time.sleep(3)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        httpd.shutdown()
+        httpd.server_close()
+        server_thread.join()
 
 if __name__ == "__main__":
     main()
