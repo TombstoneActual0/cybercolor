@@ -1,4 +1,4 @@
-# Python Gradient Web Server with Custom ASCII Art
+# Vertical Text Color Gradient For OneNote, Google Doc's
 
 A Python script that generates a colorful gradient text, serves it via a simple HTTP server, and opens it in your browser. It supports command-line options for customization and displays a stylized ASCII art banner.
 
