@@ -15,7 +15,7 @@ Common Parameters
 You can also input custom text after starting the script, and it will apply the selected gradient.
 
 ASCII Art Banner
-Copy
+
 ╔═╗╦ ╦╔╗ ╔═╗╦═╗  ╔═╗╔═╗╦  ╔═╗╦═╗╦╔═╗╔═╗╦═╗
 ║  ╚╦╝╠╩╗║╣ ╠╦╝  ║  ║ ║║  ║ ║╠╦╝║╚═╗║╣ ╠╦╝
 ╚═╝ ╩ ╚═╝╚═╝╩╚═  ╚═╝╚═╝╩═╝╚═╝╩╚═╩╚═╝╚═╝╩╚═
@@ -31,7 +31,6 @@ Standard library, but ensure your environment supports it.
 
 To install colorama, run:
 
-CopyReplit
 pip3 install colorama
 Notes
 The server runs temporarily, and the script automatically opens the generated HTML in your default browser.
